@@ -31,7 +31,7 @@ public class GeradoraDeFigurinhas {
        graphics.drawImage(imagemOriginal, 0, 0, null);
 
        // *configurar a fonte*
-       var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 64);
+       var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 32);
        graphics.setColor(Color.MAGENTA);
        graphics.setFont(fonte);
 
