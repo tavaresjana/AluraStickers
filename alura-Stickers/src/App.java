@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -31,12 +33,26 @@ public class App {
 
         // *exibir e manipular os dados*
 
+        var geradora = new GeradoraDeFigurinhas();
+
         //foreach
         for (Map<String,String> filme : listaDeFilmes) {
-            System.out.println(filme.get("title"));
+            
+            //a gente pega a URL, título, e estamos abrindo um InputStream, isso é, uma corrente de byte. Cria um gerador de figurinhas
+            String urlImagem = filme.get("image");
+            String titulo = filme.get("title");
+
+            InputStream inputStream = new URL(urlImagem).openStream();
+            var nomeArquivo = titulo + ".png";
+
+            geradora.cria(inputStream, nomeArquivo);
+
+            System.out.println(titulo);
+            System.out.println();
+            /*System.out.println(filme.get("title"));
             System.out.println(filme.get("image"));
             System.out.println(filme.get("imDbRating"));
-            System.out.println();
+            System.out.println(); */
         }
     }
 }
